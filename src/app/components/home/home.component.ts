@@ -7,7 +7,7 @@ import { DataService } from 'src/app/data.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
+  
   constructor(private data: DataService) { }
 
   ngOnInit() {

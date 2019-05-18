@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
     
     if(this.addForm.valid){
       this.authenticationService.login(this.addForm.value)
-      //this.router.navigate(['/']);
     }
   }
 

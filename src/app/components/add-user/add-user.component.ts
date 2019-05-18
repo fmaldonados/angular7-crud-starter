@@ -43,6 +43,7 @@ export class AddUserComponent implements OnInit {
     if(this.addForm.valid){
       this.userService.addUser(this.addForm.value)
       .subscribe( data => {
+        console.log(data);
         this.router.navigate(['/users']);
       });
     }

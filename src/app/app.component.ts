@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title:string;
   currentUser:any;
-
+  
   constructor(
     private authenticationService: AuthenticationService, 
     private data: DataService
@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.data.currentTitle.subscribe(title => this.title = title)
+    
   }
 
 }

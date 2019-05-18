@@ -8,13 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  title:string;
+  currentUser:any;
+  isAdmin:boolean;
+  
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService, 
-  ) { }
+  ) { 
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit() {
+    this.isAdmin = this.currentUser.role == "Admin"
   }
   logout() {
     this.authenticationService.logout();

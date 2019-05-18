@@ -3,6 +3,7 @@ import { DataService } from 'src/app/data.service';
 import { CategoryService } from 'src/app/category.service';
 import { Category } from 'src/app/models/Category';
 import { Router } from '@angular/router';
+import { AuthenticationService } from "../../authentication.service";
 
 @Component({
   selector: 'app-category-lists',
@@ -12,18 +13,24 @@ import { Router } from '@angular/router';
 export class CategoryListsComponent implements OnInit {
 
   categories: Category[];
+  currentUser:any;
+  isViewer:boolean;
 
   constructor(
     private data: DataService,
     private categoryService:CategoryService,
-    private router: Router
-    ) {  }
+    private router: Router,
+    private authenticationService: AuthenticationService, 
+    ) {  
+      this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+    }
 
   ngOnInit() {
     this.data.changeTitle("Categories");
     this.categoryService.getCategories().subscribe( (categories: Category[]) => {
       this.categories = categories;
     });
+    this.isViewer = !(this.currentUser.role != "Editor" && this.currentUser.role != "Admin")
   }
 
   editCategory(categoryId){

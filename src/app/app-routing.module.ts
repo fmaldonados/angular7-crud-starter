@@ -10,6 +10,8 @@ import { UserListsComponent } from './components/user-lists/user-lists.component
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from "./_helpers/auth.guard";
+import { AuthGuardAdmin } from "./_helpers/auth.guardAdmin";
+import { AuthGuardEditor } from "./_helpers/auth.guardEditor";
 
 const routes: Routes = [
   {
@@ -20,12 +22,12 @@ const routes: Routes = [
   {
     path: 'add-post',
     component: AddPostComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardEditor]
   },
   {
     path: 'edit-post',
     component: EditPostComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardEditor]
   },
   {
     path: 'category',
@@ -35,22 +37,22 @@ const routes: Routes = [
   {
     path: 'add-category',
     component: AddCategoryComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardEditor]
   },
   {
     path: 'edit-category',
     component: EditCategoryComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardEditor]
   },
   {
     path: 'users',
     component: UserListsComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardAdmin]
   },
   {
     path: 'add-user',
     component: AddUserComponent,
-    canActivate:[AuthGuard]
+    canActivate:[AuthGuard, AuthGuardAdmin]
   },
   {
     path: 'login',

@@ -60,7 +60,6 @@ export class EditPostComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
-    console.log(this.editForm.value)
     
     if(this.editForm.valid){
       this.postService.editPost(this.editForm.value)

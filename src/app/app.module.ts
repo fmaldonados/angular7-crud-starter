@@ -19,7 +19,8 @@ import { UserListsComponent } from './components/user-lists/user-lists.component
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { LoginComponent } from './components/login/login.component';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
-import { ErrorInterceptor} from './_helpers/error.interceptor'
+import { ErrorInterceptor} from './_helpers/error.interceptor';
+import { EditUserComponent } from './components/edit-user/edit-user.component'
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ErrorInterceptor} from './_helpers/error.interceptor'
     EditCategoryComponent,
     UserListsComponent,
     AddUserComponent,
-    LoginComponent
+    LoginComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

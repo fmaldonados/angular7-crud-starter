@@ -6,31 +6,55 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { CategoryListsComponent } from './components/category-lists/category-lists.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { UserListsComponent } from './components/user-lists/user-lists.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from "./_helpers/auth.guard";
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'add-post',
-    component: AddPostComponent
+    component: AddPostComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'edit-post',
-    component: EditPostComponent
+    component: EditPostComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'category',
-    component: CategoryListsComponent
+    component: CategoryListsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'add-category',
-    component: AddCategoryComponent
+    component: AddCategoryComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'edit-category',
-    component: EditCategoryComponent
+    component: EditCategoryComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'users',
+    component: UserListsComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'add-user',
+    component: AddUserComponent,
+    canActivate:[AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -15,6 +15,11 @@ import { EditPostComponent } from './components/edit-post/edit-post.component';
 import { CategoryListsComponent } from './components/category-lists/category-lists.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+import { UserListsComponent } from './components/user-lists/user-lists.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { LoginComponent } from './components/login/login.component';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor} from './_helpers/error.interceptor'
 
 @NgModule({
   declarations: [
@@ -27,7 +32,10 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     EditPostComponent,
     CategoryListsComponent,
     AddCategoryComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    UserListsComponent,
+    AddUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +44,8 @@ import { EditCategoryComponent } from './components/edit-category/edit-category.
     ReactiveFormsModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     PostService
   ],
   bootstrap: [AppComponent]
